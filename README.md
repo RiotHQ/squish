@@ -15,5 +15,5 @@ $ ruby squish.rb assets/javascripts
 ```
 
 ```html
-<script type="text/javascript" src="squish.js"><script/>
+<script type="text/javascript" src="squish.js"></script>
 ```
