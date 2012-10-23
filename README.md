@@ -4,7 +4,7 @@ Squish is a way of writing fast, static HTML sites.
 Instead of re-requesting every time you want another page from the site, Squish takes all your pages and caches them in Javascript on whatever page you're on.
 
 ## Limitations
-• Squish can't replace <body> tags. That means if you're putting classes on your <body> tag, you're outta luck. Put a <div> around your content with your classes and you're golden.
+• Squish can't replace `<body>` tags just yet. That means if you're putting classes on your `<body>` tag, you're outta luck. Put a `<div>` around your content with your classes and you're golden. Pull request or GTFO.
 • Because pushState doesn't work under file:/// URLs, neither does Squish. You may want to use http://anvilformac.com/ ;)
 
 ## USAGE
