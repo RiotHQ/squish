@@ -1,5 +1,7 @@
 require 'json'
 
+path = ARGV[0] || "assets/javascript"
+
 pages = {}
 
 Dir.glob("*.html").each do |page|
@@ -11,8 +13,8 @@ Dir.glob("*.html").each do |page|
    pages[page] = {title: title, body: body, filename: page}
 end
 
-js = File.read("assets/js/squish.js").gsub("\"{{SQUISH}}\"", pages.to_json)
+js = File.read("#{path}/squish.js").gsub("\"{{SQUISH}}\"", pages.to_json)
 
-File.open("assets/js/squish.js", "w") do |file|
+File.open("#{path}/squish.js", "w") do |file|
   file.puts(js)
 end
