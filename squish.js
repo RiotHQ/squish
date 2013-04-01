@@ -45,7 +45,7 @@
       body = doc.body;
       title = pages[url]['title'];
       changePage(pages[url]['title'], body, "runScripts");
-      reflectRedirectedUrl();
+      reflectRedirectedUrl(url);
       if (document.location.hash) {
         document.location.href = document.location.href;
       } else {
@@ -152,17 +152,20 @@
     }
   };
 
-  reflectRedirectedUrl = function() {
+  reflectRedirectedUrl = function(location) {
     var locationString;
 
+    console.log("Location: " + location);
     if (location !== document.location.pathname + document.location.search) {
       locationString = location.toString();
       if (locationString.match(/\.html$/)) {
         locationString = locationString.slice(0, -5);
       }
-      if (locationString.match("index")) {
-        locationString = "";
+      console.log(locationString);
+      if (locationString === "index") {
+        locationString = "/";
       }
+      console.log(locationString);
       return window.history.replaceState(currentState, '', locationString + document.location.hash);
     }
   };

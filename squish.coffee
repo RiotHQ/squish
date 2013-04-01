@@ -36,7 +36,7 @@ fetchReplacement = (url) ->
     
     changePage pages[url]['title'], body, "runScripts"
     
-    reflectRedirectedUrl()
+    reflectRedirectedUrl(url)
     
     if document.location.hash
       document.location.href = document.location.href
@@ -100,16 +100,13 @@ reflectNewUrl = (url) ->
     referer = document.location.href
     window.history.pushState { squish: true, position: currentState.position + 1 }, '', url
 
-reflectRedirectedUrl = () ->
+reflectRedirectedUrl = (location) ->
   if location isnt document.location.pathname + document.location.search
     locationString = location.toString()
     if locationString.match(/\.html$/)
       locationString = locationString.slice(0, -5)
-    if locationString.match "index"
-      locationString = ""
-    # This didn't work out with the refersh button
-    # if locationString.match(/\/index$/)
-    #   locationString = locationString.slice(0, -5)
+    if locationString == "index"
+      locationString = "/"
     window.history.replaceState currentState, '', locationString + document.location.hash
 
 rememberCurrentUrl = ->
